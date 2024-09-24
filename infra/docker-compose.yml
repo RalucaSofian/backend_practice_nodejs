@@ -1,0 +1,15 @@
+services:
+  local_db_node:
+    image: postgres
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=pass
+      - POSTGRES_DB=pets-njs
+    ports:
+      - '5432:5432'
+    volumes:
+      - db_node:/var/lib/postgresql/data
+    restart: unless-stopped
+volumes:
+  db_node:
+    driver: local
